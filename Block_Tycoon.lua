@@ -56,12 +56,7 @@ Window:AddToggle({
         end
     end
 })
-Window:AddSlider({text = 'Blocks',
-        min = 0,
-        max = 1000,
-        callback = function(v)
-            Fake.Value = v
-        end})
+Window:AddSlider({text = 'Blocks', min = 0, max = 1000, callback = function(v) Fake.Value = v end})
 Library:Init()
 
 --// Block Spoof \\--
