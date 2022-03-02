@@ -66,8 +66,8 @@ OldNameCall = hookmetamethod(game, "__namecall", function(Self, ...)
     local Info = Args[2]
     local NamecallMethod = getnamecallmethod()
 
-    -- Fake
-    if NamecallMethod == "FireServer" and Self.Name == "PlaceBlockE" and typeof(Info) == "table" and (Info[3].ClassName == "NumberValue" or Library.flags.Inf) then
+    -- Fake block
+    if NamecallMethod == "FireServer" and Self.Name == "PlaceBlockE" and Self.Drop == "DropItemE" and typeof(Info) == "table" and (Info[3].ClassName == "NumberValue" or Library.flags.Inf) then
         Info[3] = {Name=Info[1];Value=1}
     end
     return OldNameCall(Self, unpack(Args))
