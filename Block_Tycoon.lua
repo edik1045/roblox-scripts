@@ -33,7 +33,7 @@ for _, A_1 in next, BlockFolder:GetChildren() do
 end
 
 --// UI Library \\--
-local Library = loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/wally-rblx/uwuware-ui/main/main.lua'))()
+local Library = loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/Just-Egg-Salad/roblox-scripts/main/uwuware'))()
 local Window = Library:CreateWindow("Script by edik1045")
 Window:AddLabel({
     text = "discord.gg/XUata5aXz9"
