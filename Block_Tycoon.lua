@@ -22,16 +22,6 @@ local Inventory = Player:WaitForChild("Inventory")
 local BlockFolder = ReplicatedStorage:WaitForChild("Blocks")
 local Blocks = {}
 
---// Get Blocks \\--
-for _, A_1 in next, BlockFolder:GetChildren() do
-    table.insert(Blocks, (function()
-        local Fake = Instance.new("NumberValue")
-        Fake.Name = A_1.Name
-        Fake.Value = 0
-        return Fake
-    end)())
-end
-
 --// UI Library \\--
 local Library = loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/Just-Egg-Salad/roblox-scripts/main/uwuware'))()
 local Window = Library:CreateWindow("Script by edik1045")
@@ -56,8 +46,21 @@ Window:AddToggle({
         end
     end
 })
+Window:AddSlider({text = 'Blocks', min = 0, max = 1000, callback = function(v) Fake.Value = v end})
 
 Library:Init()
+
+
+--// Get Blocks \\--
+for _, A_1 in next, BlockFolder:GetChildren() do
+    table.insert(Blocks, (function()
+        local Fake = Instance.new("NumberValue")
+        Fake.Name = A_1.Name
+        Fake.Value = v
+        return Fake
+    end)())
+end
+
 
 --// Block Spoof \\--
 local OldNameCall = nil
