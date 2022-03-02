@@ -22,6 +22,7 @@ local Inventory = Player:WaitForChild("Inventory")
 local BlockFolder = ReplicatedStorage:WaitForChild("Blocks")
 local Blocks = {}
 
+
 --// UI Library \\--
 local Library = loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/Just-Egg-Salad/roblox-scripts/main/uwuware'))()
 local Window = Library:CreateWindow("Script by edik1045")
@@ -46,17 +47,15 @@ Window:AddToggle({
         end
     end
 })
-Window:AddSlider({text = 'Blocks', min = 0, max = 1000, callback = function(v) Fake.Value = v end})
-
+Window:AddSlider({text = 'Blocks', min = 0, max = 1000, callback = function(value) Fake.Value = value end})
 Library:Init()
-
 
 --// Get Blocks \\--
 for _, A_1 in next, BlockFolder:GetChildren() do
     table.insert(Blocks, (function()
         local Fake = Instance.new("NumberValue")
         Fake.Name = A_1.Name
-        Fake.Value = v
+        Fake.Value = (value)
         return Fake
     end)())
 end
@@ -70,8 +69,8 @@ OldNameCall = hookmetamethod(game, "__namecall", function(Self, ...)
     local Info = Args[2]
     local NamecallMethod = getnamecallmethod()
 
-    -- Fake block
-    if NamecallMethod == "FireServer" and Self.Name == "PlaceBlockE" and Self.Drop == "DropItemE" and typeof(Info) == "table" and (Info[3].ClassName == "NumberValue" or Library.flags.Inf) then
+    -- Fake
+    if NamecallMethod == "FireServer" and Self.Name == "PlaceBlockE" and typeof(Info) == "table" and (Info[3].ClassName == "NumberValue" or Library.flags.Inf) then
         Info[3] = {Name=Info[1];Value=1}
     end
     return OldNameCall(Self, unpack(Args))
