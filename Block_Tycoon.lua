@@ -33,7 +33,7 @@ for _, A_1 in next, BlockFolder:GetChildren() do
 end
 
 --// UI Library \\--
-local Library = loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/Just-Egg-Salad/roblox-scripts/main/uwuware'))()
+local Library = loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/wally-rblx/uwuware-ui/main/main.lua'))()
 local Window = Library:CreateWindow("Script by edik1045")
 Window:AddLabel({
     text = "discord.gg/XUata5aXz9"
@@ -56,6 +56,14 @@ Window:AddToggle({
         end
     end
 })
+Window:AddSlider({text = 'Blocks',
+        min = 0,
+        max = 1000,
+        callback = function(v)
+            Fake.Value = v
+        end
+        
+    end})
 Library:Init()
 
 --// Block Spoof \\--
