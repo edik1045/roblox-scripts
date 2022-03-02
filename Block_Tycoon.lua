@@ -61,10 +61,7 @@ Window:AddSlider({text = 'Blocks',
         max = 1000,
         callback = function(v)
             Fake.Value = v
-        end
-    end
-        
-end})
+        end})
 Library:Init()
 
 --// Block Spoof \\--
