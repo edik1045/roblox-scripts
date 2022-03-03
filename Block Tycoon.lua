@@ -39,7 +39,7 @@ Page:Toggle("Inf. Blocks", function(Inf)
 end
 )
 Page:Toggle("All Blocks", function(A_1)
-        if A_1 == true then
+        if A_1 then
             table.foreach(Blocks, function(A_1, A_2)
                 A_2.Parent = Inventory
             end)
@@ -51,7 +51,8 @@ Page:Toggle("All Blocks", function(A_1)
     end
 )
 local e = Fake.Value
-window:Slider('Fake Blocks', 0, 100, function(value)
+
+Page:Slider('Fake Blocks', 0, 100, function(value)
     e = value
 end)
 
