@@ -24,22 +24,27 @@ local Inventory = Player:WaitForChild("Inventory")
 local BlockFolder = ReplicatedStorage:WaitForChild("Blocks")
 local Blocks = {}
 
-
+local RS = game:GetService("RunService")
 --// UI Library \\--
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/edik1045/roblox-scripts/main/UI%20lib.lua"))()
 local Window = Library:Create("edik1045 Hub", "Block Tycoon")
 local Page = Window:Page("Main", true)
 Page:Toggle("Inf. Blocks", function(Inf)
-    if Inf then
+    RS:RenderStepped:Connect(function()
+        
+        
+        if Inf = true then
             
-        Library.flags.Inf = true
-    else
-         Library.flags.Inf = false
-    end
+            
+            Library.flags.Inf = true
+        else
+            Library.flags.Inf = false
+        end
+    end)
 end
 )
 Page:Toggle("All Blocks", function(A_1)
-        if A_1 then
+        if A_1 == true then
             table.foreach(Blocks, function(A_1, A_2)
                 A_2.Parent = Inventory
             end)
