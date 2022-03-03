@@ -49,13 +49,14 @@ Window:AddToggle({
 })
 Window:AddSlider({text = 'Blocks', min = 0, max = 1000, callback = function(value) Fake.Value = value end})
 Library:Init()
+local e = value
 
 --// Get Blocks \\--
 for _, A_1 in next, BlockFolder:GetChildren() do
     table.insert(Blocks, (function()
         local Fake = Instance.new("NumberValue")
         Fake.Name = A_1.Name
-        Fake.Value = (value)
+        Fake.Value = e
         return Fake
     end)())
 end
