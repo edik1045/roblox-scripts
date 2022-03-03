@@ -55,11 +55,7 @@ Page:Toggle("All Blocks", function(A_1)
         end
     end
 )
-local e = Fake.Value
 
-Page:Slider('Fake Blocks', 0, 100, function(value)
-    e = value
-end)
 
 
 
