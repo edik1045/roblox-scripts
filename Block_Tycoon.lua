@@ -24,19 +24,31 @@ local Blocks = {}
 
 
 --// UI Library \\--
-local Library = loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/Just-Egg-Salad/roblox-scripts/main/uwuware'))()
-local Window = Library:CreateWindow("Script by edik1045")
-Window:AddLabel({
-    text = "discord.gg/XUata5aXz9"
-})
-Window:AddToggle({
-    text = "Inf. Blocks",
-    flag = "Inf"
-})
-Window:AddToggle({
-    text = "All Blocks",
-    callback = function(A_1)
-        if A_1 == true then
+local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/discord%20lib.txt")()
+
+local win = DiscordLib:Window("edik1045 Hub | discord.gg/XUata5aXz9")
+
+local serv = win:Server("edik1045 Hub", "")
+
+local script = serv:Channel("Blocks")
+
+script:Toggle(
+    "Inf. Blocks",
+    false,
+    function(Inf)
+        if Inf then
+            Library.flags.Inf = true
+        else
+            Library.flags.Inf = false
+            
+        end
+    end
+)
+script:Toggle(
+    "All Blocks Fake (fake cuz cant drop lel)",
+    false,
+    function(Inf)
+        if Inf then
             table.foreach(Blocks, function(A_1, A_2)
                 A_2.Parent = Inventory
             end)
@@ -46,17 +58,26 @@ Window:AddToggle({
             end)
         end
     end
-})
-Window:AddSlider({text = 'Blocks', min = 0, max = 1000, callback = function(value) Fake.Value = value end})
-Library:Init()
-local e = value
+)
+local bvslider = script:Slider(
+    "Fake Blocks Value",
+    0,
+    1000,
+    0,
+    function(fbvalue)
+        local Fake = Instance.new("NumberValue")
+        Fake.Name = A_1.Name
+        Fake.Value = fbvalue
+                
+    end
+)
 
 --// Get Blocks \\--
 for _, A_1 in next, BlockFolder:GetChildren() do
     table.insert(Blocks, (function()
         local Fake = Instance.new("NumberValue")
         Fake.Name = A_1.Name
-        Fake.Value = 1
+        Fake.Value = fbvalue
         return Fake
     end)())
 end
