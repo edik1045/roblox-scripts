@@ -1,28 +1,3 @@
---// Exploit Check \\--
-if #{hookmetamethod, getnamecallmethod} ~= 2 then
-    game:Shutdown()
-    return
-end
-
---// Exploit Fix \\--
-if not pcall(function() return syn.protect_gui end) then
-    syn = {}
-    syn.protect_gui = function(A_1)
-        A_1.Parent = CoreGui
-    end
-end
-
---// Services \\--
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Players = game:GetService("Players")
-
---// Variables \\--
-local Player = Players.LocalPlayer
-local Inventory = Player:WaitForChild("Inventory")
-local BlockFolder = ReplicatedStorage:WaitForChild("Blocks")
-local Blocks = {}
-
-
 --// UI Library \\--
 local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/discord%20lib.txt")()
 
@@ -71,6 +46,33 @@ local bvslider = script:Slider(
                 
     end
 )
+
+--// Exploit Check \\--
+if #{hookmetamethod, getnamecallmethod} ~= 2 then
+    game:Shutdown()
+    return
+end
+
+--// Exploit Fix \\--
+if not pcall(function() return syn.protect_gui end) then
+    syn = {}
+    syn.protect_gui = function(A_1)
+        A_1.Parent = CoreGui
+    end
+end
+
+--// Services \\--
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+
+--// Variables \\--
+local Player = Players.LocalPlayer
+local Inventory = Player:WaitForChild("Inventory")
+local BlockFolder = ReplicatedStorage:WaitForChild("Blocks")
+local Blocks = {}
+
+
+
 
 --// Get Blocks \\--
 for _, A_1 in next, BlockFolder:GetChildren() do
