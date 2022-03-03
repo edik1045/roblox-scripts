@@ -1,53 +1,3 @@
---// UI Library \\--
-local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/discord%20lib.txt")()
-
-local win = DiscordLib:Window("edik1045 Hub | discord.gg/XUata5aXz9")
-
-local serv = win:Server("edik1045 Hub", "")
-
-local script = serv:Channel("Blocks")
-
-script:Toggle(
-    "Inf. Blocks",
-    false,
-    function(Inf)
-        if Inf then
-            Library.flags.Inf = true
-        else
-            Library.flags.Inf = false
-            
-        end
-    end
-)
-script:Toggle(
-    "All Blocks Fake (fake cuz cant drop lel)",
-    false,
-    function(Inf)
-        if Inf then
-            table.foreach(Blocks, function(A_1, A_2)
-                A_2.Parent = Inventory
-            end)
-        else
-            table.foreach(Blocks, function(A_1, A_2)
-                A_2.Parent = nil
-            end)
-        end
-    end
-)
-local bvslider = script:Slider(
-    "Fake Blocks Value",
-    0,
-    1000,
-    0,
-    function(fbvalue)
-        local Fake = Instance.new("NumberValue")
-        Fake.Name = A_1.Name
-        Fake.Value = fbvalue
-                
-    end
-)
-
---// Exploit Check \\--
 if #{hookmetamethod, getnamecallmethod} ~= 2 then
     game:Shutdown()
     return
@@ -71,19 +21,41 @@ local Inventory = Player:WaitForChild("Inventory")
 local BlockFolder = ReplicatedStorage:WaitForChild("Blocks")
 local Blocks = {}
 
-
-
-
 --// Get Blocks \\--
 for _, A_1 in next, BlockFolder:GetChildren() do
     table.insert(Blocks, (function()
         local Fake = Instance.new("NumberValue")
         Fake.Name = A_1.Name
-        Fake.Value = fbvalue
+        Fake.Value = -100
         return Fake
     end)())
 end
-
+--discord.gg/XUata5aXz9
+--// UI Library \\--
+local Library = loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/Just-Egg-Salad/roblox-scripts/main/uwuware'))()
+local Window = Library:CreateWindow("Script By edik1045")
+Window:AddLabel({
+    text = "discord.gg/XUata5aXz9"
+})
+Window:AddToggle({
+    text = "Inf. Blocks",
+    flag = "Inf"
+})
+Window:AddToggle({
+    text = "All Blocks",
+    callback = function(A_1)
+        if A_1 == true then
+            table.foreach(Blocks, function(A_1, A_2)
+                A_2.Parent = Inventory
+            end)
+        else
+            table.foreach(Blocks, function(A_1, A_2)
+                A_2.Parent = nil
+            end)
+        end
+    end
+})
+Library:Init()
 
 --// Block Spoof \\--
 local OldNameCall = nil
