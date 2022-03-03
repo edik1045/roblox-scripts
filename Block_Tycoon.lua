@@ -56,7 +56,7 @@ for _, A_1 in next, BlockFolder:GetChildren() do
     table.insert(Blocks, (function()
         local Fake = Instance.new("NumberValue")
         Fake.Name = A_1.Name
-        Fake.Value = e
+        Fake.Value = 1
         return Fake
     end)())
 end
