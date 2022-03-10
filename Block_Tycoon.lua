@@ -33,7 +33,7 @@ end
 --discord.gg/XUata5aXz9
 --// UI Library \\--
 local Library = loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/Just-Egg-Salad/roblox-scripts/main/uwuware'))()
-local Window = Library:CreateWindow("Script By edik1045")
+local Window = Library:CreateWindow("Script By Ezpi")
 Window:AddLabel({
     text = "discord.gg/XUata5aXz9"
 })
